@@ -1,1 +1,54 @@
-<h3>{{appTitle}}</h3>
+<h2>{{ appTitle }}</h2>
+<br />
+
+<div>
+    <form [formGroup]="userName" (submit)="onSubmit($event)">
+        <h3>User Details</h3>
+        <input type="text" placeholder="Enter Firstname" formControlName="firstName" />
+        <br />
+        <input type="text" placeholder="Enter Lastname" formControlName="lastName" />
+        <br />
+        <br />
+
+        <div formGroupName="address">
+            <h5>Address</h5>
+            <input id="street" type="text" placeholder="Enter Street" formControlName="street">
+            <br />
+            <input id="city" type="text" placeholder="Enter City" formControlName="city">
+            <br />
+            <input id="state" type="text" placeholder="Enter State" formControlName="state">
+            <br />
+            <input id="state" type="text" placeholder="Enter Country" formControlName="country">
+            <br />
+            <input id="zip" type="text" placeholder="Enter Zipcode" formControlName="zip">
+            <br />
+            <br />
+        </div>
+
+        <button type="submit" [disabled]="!userName.valid">Submit</button>
+    </form>
+</div>
+
+<br />
+
+<div>
+    <form [formGroup]="userProfile" (submit)="onProfileSubmit($event)">
+        <h3>User Profile</h3>
+        <input type="text" placeholder="Enter Name" formControlName="name" />
+        <br />
+        <input type="text" placeholder="Enter Surname" formControlName="surname" />
+        <br />
+        <br />
+
+        <div formGroupName="presentAddress">
+            <h5>Present Address</h5>
+            <input type="text" placeholder="Enter State" formControlName="livingState">
+            <br />
+            <input type="text" placeholder="Enter Country" formControlName="livingCountry">
+            <br />
+            <br />
+        </div>
+
+        <button type="submit" [disabled]="!userName.valid">Submit</button>
+    </form>
+</div>
