@@ -52,3 +52,20 @@
         <button type="submit" [disabled]="!userName.valid">Submit</button>
     </form>
 </div>
+
+<br />
+
+<div>
+    <form [formGroup]="personalInfo" (submit)="onSubmitInfo($event)">
+        <button type="button" (click)="addNewData()">Add Number</button>
+
+        <div formArrayName="phoneNumbers">
+            <div *ngFor="let num of personalInfo.controls.phoneNumbers['controls']; index as i" [formGroupName]="i">
+                <input id="num-{{i}}" type="text" placeholder="Enter Number" formControlName="number">
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<br />

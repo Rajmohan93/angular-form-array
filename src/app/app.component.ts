@@ -7,6 +7,7 @@ import {
   FormControl,
   Validators,
   FormBuilder,
+  FormArray,
 } from '@angular/forms';
 
 @Component({
@@ -44,12 +45,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.userName.patchValue({
-      firstName: 'Pushpam',
-      lastName: 'Ramachandran',
+      firstName: 'MS',
+      lastName: 'Dhoni',
     });
 
     this.userProfile.patchValue({
-      name: 'Sithara',
+      name: 'Sachin',
       presentAddress: {
         livingState: 'Tamil Nadu',
       },
@@ -64,5 +65,35 @@ export class AppComponent implements OnInit {
   onProfileSubmit(e: any) {
     e.preventDefault();
     console.log(this.userProfile.value);
+  }
+
+  personalInfo = this.fb.group({
+    phoneNumbers: this.fb.array([this.initData(1)]),
+  });
+
+  initData(ord: number) {
+    return this.fb.group({
+      listid: [0],
+      number: [''],
+      order: [ord],
+      listtype: [3],
+      delete: [0],
+    });
+  }
+
+  get formArr() {
+    return this.personalInfo.get('phoneNumbers') as FormArray;
+  }
+
+  addNewData() {
+    let length: any = this.personalInfo.controls.phoneNumbers.value.length + 1;
+    this.formArr.push(this.initData(length));
+  }
+
+  onSubmitInfo(e: any) {
+    e.preventDefault();
+    /* console.log(this.personalInfo.controls.phoneNumbers);
+    console.log(this.personalInfo.controls.phoneNumbers.value.length); */
+    console.log(this.personalInfo.value);
   }
 }
