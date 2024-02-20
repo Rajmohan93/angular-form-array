@@ -1,0 +1,12 @@
+button {
+  cursor: pointer;
+}
+
+.buttons-align {
+  display: flex;
+  flex-direction: row;
+}
+
+.storeButton {
+  margin-right: 10px;
+}

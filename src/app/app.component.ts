@@ -96,4 +96,12 @@ export class AppComponent implements OnInit {
     console.log(this.personalInfo.controls.phoneNumbers.value.length); */
     console.log(this.personalInfo.value);
   }
+
+  storeSession() {
+    sessionStorage.setItem('username', 'Rajmohan');
+  }
+
+  removeSession() {
+    sessionStorage.removeItem('username');
+  }
 }
